@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+
+# Firebase config with real credentials (don't commit)
+firebase-config-REAL.js
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Cache
+.cache/
+dist/
+build/
+
+# Local testing files
+test-*.html
+*.backup.js

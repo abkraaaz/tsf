@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎂 MD TaUsHiF Alam - Birthday Celebration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- PRELOADER -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-box">
+            <div class="cake-animation">🎂</div>
+            <p>Loading Magic...</p>
+        </div>
+    </div>
+
+    <!-- CANVAS FOR EFFECTS -->
+    <canvas id="effectsCanvas"></canvas>
+    <canvas id="particlesCanvas"></canvas>
+
+    <!-- GLOBAL HEART RAIN -->
+    <div id="heartRain" class="heart-rain-container-global"></div>
+
+    <!-- MAIN CONTAINER -->
+    <div id="mainContainer" class="main-container">
+
+        <!-- ============ INTRO SECTION ============ -->
+        <section id="introSection" class="intro-section">
+            <!-- Firecracker Animation Container -->
+            <div id="firecrackerContainer" class="firecracker-container"></div>
+
+            <div class="intro-content">
+                <div class="intro-title-wrapper">
+                    <div class="birthday-message-big">
+                        <h2 class="birthday-greeting">🎂 Happy 21st Birthday 🎂</h2>
+                    </div>
+                    
+                    <h1 class="glowing-name">
+                        <span class="emoji-float emoji-1">🎂</span>
+                        <span class="name-glow">MD TaUsHiF Alam</span>
+                        <span class="emoji-float emoji-2">🎉</span>
+                        <span class="emoji-float emoji-3">❤️</span>
+                        <span class="emoji-float emoji-4">✨</span>
+                    </h1>
+                </div>
+
+                <div class="shayari-wrapper">
+                    <p class="shayari-text">
+                        <span class="shayari-line-1">तुम्हारी मुस्कुराहट में खुशियों का मेला है,</span>
+                        <span class="shayari-line-2">आज का दिन तुम्हारा, यह वादा हमारे के लिए खेला है 💕</span>
+                    </p>
+                </div>
+
+                <button class="scroll-btn" onclick="scrollToSection('#gallerySection')">
+                    <span>Explore Gallery</span>
+                    <span class="arrow">↓</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- ============ GALLERY SECTION ============ -->
+        <section id="gallerySection" class="gallery-section">
+            <h2 class="section-title">📸 Precious Moments</h2>
+            
+            <div class="gallery-wrapper">
+                <div class="gallery-container">
+                    <div class="gallery-slides" id="gallerySlides">
+                        <div class="gallery-slide" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center;">
+                            <div style="text-align: center; color: white;">
+                                <h3>Slide 1: Your Photo Here</h3>
+                                <p style="font-size: 4rem;">📷</p>
+                            </div>
+                        </div>
+                        <div class="gallery-slide" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); display: flex; align-items: center; justify-content: center;">
+                            <div style="text-align: center; color: white;">
+                                <h3>Slide 2: Happy Moments</h3>
+                                <p style="font-size: 4rem;">😊</p>
+                            </div>
+                        </div>
+                        <div class="gallery-slide" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); display: flex; align-items: center; justify-content: center;">
+                            <div style="text-align: center; color: white;">
+                                <h3>Slide 3: Best Times</h3>
+                                <p style="font-size: 4rem;">🎊</p>
+                            </div>
+                        </div>
+                        <div class="gallery-slide" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); display: flex; align-items: center; justify-content: center;">
+                            <div style="text-align: center; color: white;">
+                                <h3>Slide 4: Celebrations</h3>
+                                <p style="font-size: 4rem;">🎉</p>
+                            </div>
+                        </div>
+                        <div class="gallery-slide" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); display: flex; align-items: center; justify-content: center;">
+                            <div style="text-align: center; color: white;">
+                                <h3>Slide 5: Special Moments</h3>
+                                <p style="font-size: 4rem;">⭐</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Controls -->
+                    <button class="gallery-btn gallery-prev" onclick="slideGallery(-1)">❮</button>
+                    <button class="gallery-btn gallery-next" onclick="slideGallery(1)">❯</button>
+                </div>
+
+                <!-- Gallery Indicators -->
+                <div class="gallery-indicators" id="galleryIndicators"></div>
+            </div>
+
+            <!-- Fullscreen Gallery Modal -->
+            <div id="galleryFullscreen" class="gallery-fullscreen">
+                <div class="fullscreen-image-container">
+                    <div id="fullscreenslides" class="fullscreen-slides"></div>
+                    <button class="fullscreen-close" onclick="closeGalleryFullscreen()">✕</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ BIRTHDAY MESSAGE WALL ============ -->
+        <section id="messageSection" class="message-section">
+            <h2 class="section-title">💌 Birthday Message Wall</h2>
+            
+            <div class="message-box-wrapper">
+                <div class="message-input-box">
+                    <input type="text" id="userName" placeholder="Your Name" maxlength="30" class="message-input">
+                    <textarea id="userMessage" placeholder="Write your birthday wishes... (max 200 chars)" maxlength="200" class="message-textarea"></textarea>
+                    <button id="submitMessage" class="submit-btn">Send Wishes ❤️</button>
+                    <p class="message-char-count"><span id="charCount">0</span>/200</p>
+                </div>
+
+                <!-- Messages Display -->
+                <div id="messagesContainer" class="messages-container">
+                    <div class="messages-loading">Loading wishes...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ VALENTINE SECTION ============ -->
+        <section id="valentineSection" class="valentine-section">
+            <h2 class="section-title">❤️ Valentine Special</h2>
+
+            <div class="valentine-tabs">
+                <button class="valentine-tab active" onclick="switchValentineTab('calculator')">💕 Love Calculator</button>
+                <button class="valentine-tab" onclick="switchValentineTab('flames')">🔥 FLAMES Game</button>
+                <button class="valentine-tab" onclick="switchValentineTab('spin')">🎡 Crush Matcher</button>
+            </div>
+
+            <!-- LOVE CALCULATOR TAB -->
+            <div id="calculatorTab" class="valentine-tab-content active">
+                <div class="calculator-wrapper">
+                    <div class="calc-inputs">
+                        <input type="text" id="name1" placeholder="Enter First Name" class="valentine-input">
+                        <span class="plus-sign">+</span>
+                        <input type="text" id="name2" placeholder="Enter Second Name" class="valentine-input">
+                    </div>
+                    <button class="calc-btn" onclick="calculateLove()">Calculate Love 💗</button>
+                    <div id="loveResult" class="love-result"></div>
+                </div>
+            </div>
+
+            <!-- FLAMES TAB -->
+            <div id="flamesTab" class="valentine-tab-content">
+                <div class="flames-wrapper">
+                    <div class="flames-inputs">
+                        <input type="text" id="flamesName1" placeholder="First Name" class="valentine-input">
+                        <span class="plus-sign">+</span>
+                        <input type="text" id="flamesName2" placeholder="Second Name" class="valentine-input">
+                    </div>
+                    <button class="flames-btn" onclick="playFlames()">Play FLAMES 🔥</button>
+                    <div id="flamesResult" class="flames-result"></div>
+                </div>
+            </div>
+
+            <!-- SPIN GAME TAB -->
+            <div id="spinTab" class="valentine-tab-content">
+                <div class="spin-wrapper">
+                    <input type="text" id="yourName" placeholder="Enter Your Name" class="valentine-input">
+                    <button class="spin-btn" onclick="startSpinGame()">Spin the Wheel 🎡</button>
+                    
+                    <div class="spin-container">
+                        <div id="spinWheel" class="spin-wheel"></div>
+                        <div class="spin-arrow">▲</div>
+                    </div>
+                    
+                    <div id="spinResult" class="spin-result"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ POLLS SECTION ============ -->
+        <section id="pollsSection" class="polls-section">
+            <h2 class="section-title">📊 Quick Polls</h2>
+            
+            <div class="polls-wrapper">
+                <div class="poll-card" id="pollCard">
+                    <h3 id="pollQuestion" class="poll-question"></h3>
+                    <div id="pollOptions" class="poll-options"></div>
+                    <div class="poll-navigation">
+                        <button class="poll-nav-btn" onclick="previousPoll()">← Previous</button>
+                        <span id="pollCounter" class="poll-counter"></span>
+                        <button class="poll-nav-btn" onclick="nextPoll()">Next →</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ CREATOR'S SPECIAL GIFT SECTION ============ -->
+        <section id="giftSection" class="gift-section">
+            <h2 class="section-title">🎁 Creator's Special Gift</h2>
+            
+            <div class="gift-container">
+                <div class="gift-box" onclick="openSpecialGift()">
+                    <div class="gift-wrapper">
+                        <div class="gift-box-top">
+                            <div class="gift-ribbon gift-ribbon-h"></div>
+                            <div class="gift-ribbon gift-ribbon-v"></div>
+                            <div class="gift-bow"></div>
+                        </div>
+                        <div class="gift-box-body">
+                            <p class="gift-label">Click to Open 🎉</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gift Message Modal -->
+                <div id="giftModal" class="gift-modal">
+                    <div class="gift-modal-content">
+                        <button class="gift-modal-close" onclick="closeSpecialGift()">✕</button>
+                        
+                        <div class="gift-message-wrapper">
+                            <h3 class="gift-title">A Special Message For You 💝</h3>
+                            
+                            <div class="gift-message">
+                                <p class="gift-message-text">
+                                    Happy 21st Birthday Taushif! 🎂
+                                </p>
+                                <p class="gift-message-text">
+                                    Today is your day to shine, to celebrate who you are, and to look forward to all the amazing adventures that await you!
+                                </p>
+                                <p class="gift-message-text">
+                                    May your 21st year be filled with:
+                                </p>
+                                <ul class="gift-list">
+                                    <li>✨ Unforgettable memories with loved ones</li>
+                                    <li>💪 New achievements and accomplishments</li>
+                                    <li>❤️ Joy, laughter, and happiness every single day</li>
+                                    <li>🌟 Dreams coming true and goals being reached</li>
+                                    <li>💫 Love, support, and good health always</li>
+                                </ul>
+                                <p class="gift-message-text" style="margin-top: 20px; font-style: italic;">
+                                    You deserve all the best in life! 🎊
+                                </p>
+                            </div>
+
+                            <div class="gift-signature">
+                                <p>With ❤️ and Best Wishes</p>
+                                <p style="font-size: 0.9rem; opacity: 0.8;">From Someone Special 💕</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ SOCIAL SECTION ============ -->
+        <section id="socialSection" class="social-section">
+            <div class="social-content">
+                <h2 class="section-title">Connect With Me 📱</h2>
+                
+                <div class="social-links">
+                    <a href="javascript:void(0)" class="social-link instagram-link" data-social="instagram">
+                        <span class="social-icon">📷</span>
+                        <span class="social-text">Instagram</span>
+                    </a>
+                    <a href="javascript:void(0)" class="social-link snapchat-link" data-social="snapchat">
+                        <span class="social-icon">👻</span>
+                        <span class="social-text">Snapchat</span>
+                    </a>
+                </div>
+
+                <div style="margin-top: 40px;">
+                    <button onclick="viewGameStats()" title="View game activity and player statistics" style="
+                        background: linear-gradient(135deg, #667eea, #764ba2);
+                        color: white;
+                        border: none;
+                        padding: 12px 25px;
+                        border-radius: 25px;
+                        cursor: pointer;
+                        font-family: 'Dancing Script', cursive;
+                        font-weight: 600;
+                        font-size: 0.95rem;
+                        transition: all 0.3s ease;
+                        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+                    " onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                        📊 View Game Stats
+                    </button>
+                </div>
+
+                <div class="footer-text">
+                    <p>Made with ❤️ on your special day</p>
+                    <p style="font-size: 0.9rem; margin-top: 10px; opacity: 0.7;">© 2026 - Birthday Wishes 🎂</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- BACKGROUND MUSIC -->
+    <audio id="bgMusic" loop style="display: none;">
+        <source src="https://stream.zingmp3.vn/ZW956OCC/20231016/0e8d7a9df9476ce36b066b12b6df8e83/128/raham_daikat-original.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- FIREBASE SCRIPTS -->
+    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js"></script>
+    <script src="firebase.js"></script>
+
+    <!-- MAIN SCRIPTS -->
+    <script src="script.js"></script>
+</body>
+</html>
